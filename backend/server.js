@@ -19,15 +19,8 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// ------------------ User Schema ------------------
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  mobile: { type: String, required: true },
-  password: { type: String, required: true },
-});
-
-const User = mongoose.model('User', userSchema);
+// ------------------ User Model ------------------
+const User = require('./models/User');
 
 // ------------------ JWT Helper ------------------
 const createToken = (user) => {
@@ -76,7 +69,7 @@ app.post('/api/send-otp', async (req, res) => {
 
   try {
     await transporter1.sendMail(mailOptions);
-    console.log(`✅ SignUp OTP sent to ${email}: ${otp}`);
+    console.log(`✅ SignUp OTP sent to ${email}`);
     res.status(200).json({ msg: "✅ OTP sent successfully!" });
 
     // Auto-delete OTP after 5 minutes
@@ -107,8 +100,8 @@ app.post('/api/register', async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(409).json({ msg: '⚠️ User already exists.' });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ name, email, mobile, password: hashedPassword });
+    // Let the User model pre-save hook hash the password
+    const newUser = new User({ name, email, mobile, password });
     await newUser.save();
 
     res.status(201).json({ msg: '✅ Account created successfully!' });
@@ -160,7 +153,7 @@ app.post('/api/forgot-password', async (req, res) => {
 
   try {
     await transporter1.sendMail(mailOptions);
-    console.log(`✅ Forgot Password OTP sent to ${email}: ${otp}`);
+    console.log(`✅ Forgot Password OTP sent to ${email}`);
     res.json({ msg: '✅ OTP sent to your email.' });
 
     setTimeout(() => delete otpStore[email], 5 * 60 * 1000);
