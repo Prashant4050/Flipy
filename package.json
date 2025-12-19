@@ -1,4 +1,14 @@
 {
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "Node and Express backend project",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
@@ -21,23 +31,14 @@
     "nodemailer": "^7.0.5",
     "react-icons": "^5.5.0"
   },
-  "name": "practice",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/het0305/practice.git"
+    "url": "https://github.com/het0305/practice.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/het0305/practice/issues"
-  },
-  "homepage": "https://github.com/het0305/practice#readme"
+  "author": "Prashant",
+  "license": "ISC"
 }
