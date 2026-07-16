@@ -173,12 +173,11 @@ bookswap/
 │   │   └── User.js
 │   ├── routes/
 │   │   └── auth.js
-│   ├── .env.example
+│   ├── .env
 │   ├── .gitignore
 │   ├── server.js
 │   ├── sendOtp.js
 │   ├── package.json
-│   └── [documentation files]
 ├── frontend/
 │   ├── public/
 │   ├── src/
@@ -268,7 +267,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-Your Name - [Your GitHub](https://github.com/yourusername)
+Prashant - [https://github.com/Prashant4050]
 
 ## 🙏 Acknowledgments
 
@@ -279,7 +278,7 @@ Your Name - [Your GitHub](https://github.com/yourusername)
 
 ## 📧 Contact
 
-For support or queries, please email: your-email@gmail.com
+For support or queries, please email: malaviyaprashant4050@gmail.com
 
 ---
 
